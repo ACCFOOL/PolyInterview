@@ -18,5 +18,5 @@ Applicants for the Research Fellow posts should have:
 - A doctoral degree.
 - At least three years of postdoctoral research experience or equivalent qualifications and experience.
 
-- # Interview Video Link
-- [![WiseLearn Project Introduction](https://img.shields.io/badge/YouTube-Watch%20Project%20Video-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=zo8JikB80IY)
+# Interview Video Link
+[![WiseLearn Project Introduction](https://img.shields.io/badge/YouTube-Watch%20Project%20Video-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=zo8JikB80IY)
