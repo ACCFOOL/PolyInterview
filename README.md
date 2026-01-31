@@ -1,6 +1,6 @@
 <div align="center">
   <h1>PolyInterview</h1>
-  <img alt="PolyInterview" src="./hero.png" width="900">
+  <img alt="PolyInterview" src="./source/hero.png" width="900">
   <p><strong>AI-powered mock interviews with real-time feedback to help you land your dream job.</strong></p>
   <p>
     <img alt="Python" src="https://img.shields.io/badge/python-3.8%2B-blue">
@@ -28,7 +28,7 @@ We address the limitations of existing solutions:
 Why now? The demand for scalable, realistic remote interview practice is surging. Only a real‑time digital human can provide the necessary immersive presence to truly prepare candidates for high‑stakes interactions, all while being affordable and available 24/7.
 
 <div align="center">
-  <img alt="Login Page" src="./SCR-20260131-rjnu.png" width="900">
+  <img alt="Login Page" src="./source/SCR-20260131-rjnu.png" width="900">
 </div>
 
 ---
@@ -52,7 +52,7 @@ The platform operates on an intelligent multi‑agent architecture that orchestr
    - **Interviewer Agent:** delivers questions and triggers follow‑ups.
 2. **Performance Evaluation Agent:** performs **Feature Assessment** (Professional Performance, Way of Expression, Non‑verbal Behavior, Oral Expression), then aggregates results into **Aspect Assessment** and **Proficiency Assessment**, producing evaluation results and improvement suggestions.
 
-<img alt="PolyInterview Workflow" src="./System_Level.drawio.png" width="900">
+<img alt="PolyInterview Workflow" src="./source/System_Level.drawio.png" width="900">
 
 ### Intelligent Question Generation Logic 🧩
 The platform ensures practice relevance by dynamically generating interview questions that align inquiry types with KSA/STAR/Big‑Five dimensions, tailored to the specific job description (JD).
@@ -95,7 +95,7 @@ This section explains the internal evaluation architecture and theoretical groun
   - **Audio‑LLM** for speech and vocal delivery
 - **Aggregation:** scores flow from **Feature → Aspect → Proficiency**, where features are per‑response signals, aspects summarize cross‑response dimensions, and proficiency provides the overall evaluation.
 
-<img alt="Overall Assessment Framework" src="./overall-assessment-framework.png" width="900">
+<img alt="Overall Assessment Framework" src="./source/overall-assessment-framework.png" width="900">
 
 ### References 📖
 1. Hollandsworth Jr, J. G., Kazelskis, R., Stevens, J., & Dressel, M. E. (1979). Relative contributions of verbal, articulative, and nonverbal communication to employment decisions in the job interview setting. *Personnel Psychology*, 32(2), 359–367.
@@ -108,17 +108,17 @@ This section explains the internal evaluation architecture and theoretical groun
 ## Interface Preview 🖥️
 ### Interview Setting
 <div align="center">
-  <img alt="Interview Setting" src="./屏幕截图_31-1-2026_20045_localhost.jpeg" width="900">
+  <img alt="Interview Setting" src="./source/屏幕截图_31-1-2026_20045_localhost.jpeg" width="900">
 </div>
 
 ### Interview
 <div align="center">
-  <img alt="Interview" src="./屏幕截图_31-1-2026_20239_localhost.jpeg" width="900">
+  <img alt="Interview" src="./source/屏幕截图_31-1-2026_20239_localhost.jpeg" width="900">
 </div>
 
 ### Assessment Report (Sample)
 <div align="center">
-  <img alt="Assessment Report" src="./屏幕截图_31-1-2026_2104_localhost.jpeg" width="900">
+  <img alt="Assessment Report" src="./source/屏幕截图_31-1-2026_2104_localhost.jpeg" width="900">
 </div>
 
 ---
