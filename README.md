@@ -123,7 +123,80 @@ This section explains the internal evaluation architecture and theoretical groun
 
 ---
 ## Version Updates 🆕
-- **2026-01-31** — Added high‑demand queue stage for interview sessions and improved session orchestration.
+<details>
+<summary style="font-size: 1.75em; font-weight: bold;">Version 0.1.0</summary>
+
+## Update Date 2026-02-11
+
+### Added
+
+**Core Platform**
+- Build AI-powered interview preparation platform with resume optimization and mock interviews
+- Implement user authentication system with JWT, profiles, and admin dashboard
+- Enable HTTPS across all services with SSL certificate generation
+- Add maintenance page for graceful server updates
+
+**Digital Human**
+- Integrate digital human interviewer powered by LiveTalking, Wav2Lip, and WebRTC streaming
+- Implement session pool for multi-user concurrent access
+- Support multiple interviewer avatars with distinct voices and difficulty levels (Basic/Intermediate/Advanced)
+- Add interviewer style selection with customizable prompts
+
+**Interview System**
+- Implement 5-stage interview flow: Setup, Queue, Loading, Live, and Feedback
+- Generate personalized interview questions via LLM based on resume, position, and JD
+- Add real-time speech-to-text using Qwen3-ASR
+- Support adaptive follow-up question generation
+- Add pronunciation assessment with WAV recording
+- Display real-time audio waveform visualization during interview
+- Play closing response from digital human after interview ends
+
+**Evaluation System**
+- Implement competency-based evaluation framework (V2) with 13 features, 10 aspects, and final scores
+- Add VLM-based non-verbal behavior analysis (eye contact, facial expression, body posture, gesture)
+- Enable real-time per-question evaluation during interview
+- Unify scoring to 0-10 scale across all dimensions
+- Generate aspect and feature summaries with improvement suggestions
+- Add PDF evaluation report download
+- Add JSON sanitizer for robust LLM response parsing
+
+**Frontend**
+- Add landing page with embedded login and welcome back card
+- Display user avatar and profile navigation in header
+- Support job position selection with company and JD input
+- Add user survey in evaluation feedback page
+- Add interviewer selector with info tooltips
+
+**Backend**
+- Add unified colored logging system with structured logging
+- Centralize model configuration for one-click provider switching
+- Support DashScope international endpoint (Singapore)
+- Add unified service startup for digital human and STT
+- Extract prompts to external template files for maintainability
+
+### Changed
+- Migrate STT from AssemblyAI to Qwen3-ASR with upgraded models
+- Simplify interviewers from 5 to 3 with difficulty progression
+- Unify question_index to 1-based throughout the system
+- Replace transcript textarea with audio waveform visualization
+- Make JD optional in interview setup
+
+### Fixed
+- Remove double division by 10 in oral expression score calculation
+- Resolve VLM race conditions causing API 400 errors
+- Correct score scaling for Logic and VLM dimensions
+- Fix question scores showing 0 in feedback stage
+- Prevent closing message audio cutoff on interview end
+- Handle None scores in pronunciation assessment
+- Prevent atexit from killing services on reloader restart
+- Separate interview and media timestamps for unique filenames
+- Wait for async question evaluations before finalizing results
+- Fix digital human connection and video format conversion issues
+
+</details>
+
+<!-- - **2026-01-31** — Added high‑demand queue stage for interview sessions and improved session orchestration.
 - **2026-01-30** — Added user‑facing workflow manual, updated architecture visuals, and refreshed hero assets.
 - **2025-12-15** — Introduced real‑time digital human interviewer powered by LiveTalking + Wav2Lip.
-- **2025-11-01** — Launched structured assessment reports.
+- **2025-11-01** — Launched structured assessment reports. -->
+
