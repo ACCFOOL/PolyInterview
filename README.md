@@ -122,11 +122,9 @@ This section explains the internal evaluation architecture and theoretical groun
 </div>
 
 ---
-## Version Updates 🆕
+## Version Updates
 <details>
-<summary style="font-size: 1.75em; font-weight: bold;">Version 0.1.0</summary>
-
-## Update Date 2026-02-11
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.1.0 (2026-02-11)</summary>
 
 ### Added
 
