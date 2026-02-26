@@ -124,6 +124,105 @@ This section explains the internal evaluation architecture and theoretical groun
 ---
 ## Version Updates
 <details>
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.1 (2026-02-26)</summary>
+
+> **Architectural Refactor (In Progress):** This release begins a large-scale refactor
+> across backend and frontend to reduce file size, improve modularity, and enforce
+> separation of concerns. The refactor is not yet complete — remaining tasks (including
+> replacing `print()` statements with structured logging) are deferred to future releases.
+
+### Changed
+
+**Backend**
+- Split monolithic `interview.py` (2073 lines) into 7 focused route blueprints
+  (`interview_session`, `interview_questions`, `interview_answers`, `interview_evaluation`,
+  `interview_history`, `interview_report`, `interview_misc`) plus a new `domain/` layer
+  (score rules, legacy converter, dir resolver) and `repositories/` layer
+  (interview log read/write operations, evaluation repository)
+- Split `evaluation_service.py` into focused service modules: `nonverbal_service.py`
+  (+455 lines) and `pronunciation_service.py` (+102 lines), each handling a single
+  evaluation concern
+- Split `pdf_service.py` into a `services/pdf/` subpackage with 5 dedicated modules:
+  `constants`, `styles`, `page_number`, `score_components`, and `table_builders`
+
+**Interview System**
+- Split `FeedbackStage.vue` from 2730 lines down to 579 lines by extracting 6
+  sub-components for score display, dimension breakdown, improvement suggestions,
+  and report actions
+- Split `SurveyModal.vue` from 881 lines down to 409 lines by extracting
+  `SurveyQuestionRenderer.vue` and a `useSurveyLogic` composable
+- Extract session lifecycle and PDF export logic from `InterviewSimulation.vue` into
+  dedicated `useSessionManagement.js` and `usePDFExport.js` mixins; add JSDoc to all
+  mixins
+
+**Resume Optimization**
+- Split `CVRevise.vue` into 5 sub-components under `features/resume/`:
+  `JobInputForm`, `AnalysisLoading`, `ScoreCard`, `ComparisonPanel`, and
+  `SuggestionsList`, each with its own mixin
+
+**Frontend**
+- Complete migration from flat `components/` directory to feature-based `features/`
+  directory structure covering all major modules
+- Split `MaterialRecommendation.vue` and `PositionRecommendation.vue` into modular
+  feature directories each containing sub-components (`CVUploadCard`, `ChatMessage`,
+  `ChatInputArea`, `UserInfoBanner`, `JobCard`, `PreferencesForm`) and composable mixins
+- Split `Profile.vue` into `AccountInfoCard`, `BasicInfoCard`, and
+  `InterviewHistoryCard`; split `Main.vue` into `HeroSection`, `FeatureGrid`,
+  `ProcessSteps`, `HomeHeader`, and `HomeFooter`; split `Landing.vue` into `AuthCard`
+  and `LandingIntro`
+- Unify repeated page header markup across views into a shared `PageHeader` component;
+  extract `ResumeUploadSection` as a reusable shared component
+
+### Fixed
+
+**Security**
+- Add DOMPurify XSS sanitization to all HTML rendering points in the interview module
+  to prevent cross-site scripting vulnerabilities
+
+**Backend**
+- Replace bare `except` clauses with typed exception handlers across backend services
+- Remove redundant `sys.path` manipulation and clean up dead code files introduced
+  during the repository split
+
+**Frontend**
+- Remove all `console.log` statements from production frontend code
+- Fix empty `catch` blocks by adding proper error handling or explicit ignores
+- Remove dead code and unused imports; standardize API call patterns across components
+
+</details>
+
+<details>
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.0 (2026-02-25)</summary>
+
+### Added
+
+**Core Platform**
+- Centralize port configuration in `config/ports.json` with multi-environment support
+
+**Frontend**
+- Extract hardcoded frontend parameters (media, digital human, API) into centralized config modules
+- Add delete history and sign out features to Profile page
+
+### Changed
+
+**Frontend**
+- Redirect root path `/` to `/login` as the primary login entry point
+
+### Fixed
+
+**Interview System**
+- Wait for ASR `[FINAL]` event before closing WebSocket on stop to prevent incomplete STT results
+- Align video upload and heartbeat timeouts to 10 minutes to prevent premature upload failures
+
+**Evaluation System**
+- Remove legacy nonverbal analysis methods that were shadowing the updated implementation
+
+**Digital Human**
+- Fix ffmpeg-related function causing video processing errors
+
+</details>
+
+<details>
 <summary style="font-size: 1.5em; font-weight: bold;">Version 0.1.0 (2026-02-11)</summary>
 
 ### Added
