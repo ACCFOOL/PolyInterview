@@ -124,6 +124,85 @@ This section explains the internal evaluation architecture and theoretical groun
 ---
 ## Version Updates
 <details>
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.3 (2026-03-04)</summary>
+
+### Added
+
+**Core Platform**
+- Migrate Auth Service database from SQLite to PostgreSQL with Docker Compose
+- Add SonarQube project configuration for code quality analysis
+- Enhance CORS settings to allow dynamic IP origins in development environment
+
+**Interview System**
+- Add recording processing state with visual feedback during transitions
+
+### Changed
+
+**Core Platform**
+- Relax password validation rules to minimum 6 characters with no complexity requirements
+- Replace password hash column with role tag in admin dashboard
+
+### Fixed
+
+**Core Platform**
+- Update auth service port numbers for development and testing environments
+
+**Interview System**
+- Reset recording button state correctly after follow-up questions
+- Disable recording button while loading next question
+
+</details>
+
+<details>
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.2 (2026-03-03)</summary>
+
+> **Concurrency & Security Audit:** This release focuses on a comprehensive concurrency
+> and security review across all services, addressing thread-safety issues, authentication
+> enforcement, and configuration hardening identified during the audit.
+
+### Added
+
+**Core Platform**
+- Unify admin login with JWT-based role authentication, replacing the separate admin login page with automatic role-based redirect
+
+**Interview System**
+- Add recording processing state with visual feedback to prevent duplicate submissions during audio/video transitions
+
+**Backend**
+- Add `log_highlight` logger utility for formatted interview Q&A console display
+
+### Changed
+
+**Interview System**
+- Migrate audio capture from deprecated ScriptProcessorNode to AudioWorkletNode for improved performance and browser compatibility
+
+### Fixed
+
+**Core Platform**
+- Harden configuration security: enforce strong JWT secrets, move credentials to environment variables, disable Flask debug by default, and remove SSL private keys from version control
+- Enforce JWT authentication middleware and role-based authorization across all API routes, eliminating IDOR vulnerabilities
+- Add CORS origin validation, rate limiting, and security response headers
+- Enforce secure cookie flags, password complexity policy, and token revocation support
+
+**Backend**
+- Add path traversal prevention and input validation for all file upload and retrieval operations
+- Fix thread-safety issues: per-session data isolation, file locking, singleton service locking, UUID-based filenames, and bounded thread pool
+- Fix AI service concurrency and user registration race conditions
+- Remove Timer leak risk and add thread-safe singleton locking to evaluation services
+- Sanitize error responses to prevent internal path and stack trace exposure
+
+**Interview System**
+- Fix STT WebSocket reconnect loop and audio upload race condition
+- Remove JWT authentication from STT WebSocket to resolve connection failures
+- Resolve audio recording race condition and ASR FINAL event timeout handling
+
+**Frontend**
+- Add missing score badge background colors in feedback evaluation views
+- Reset auth form state when toggling between login and register modes
+
+</details>
+
+<details>
 <summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.1 (2026-02-26)</summary>
 
 > **Architectural Refactor (In Progress):** This release begins a large-scale refactor
