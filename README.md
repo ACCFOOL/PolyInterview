@@ -12,7 +12,7 @@
 > **⚠️ ATTENTION (PolyU Only)**  
 > This platform is open to **PolyU students and staff**.  
 > Please connect to **PolyUWLAN** first, then access:  
-> **https://158.132.255.205:8080/login#/**
+> **https://158.132.255.205/**
 
 ---
 ## Introduction 🌍
