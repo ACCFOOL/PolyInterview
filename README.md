@@ -124,6 +124,42 @@ This section explains the internal evaluation architecture and theoretical groun
 ---
 ## Version Updates
 <details>
+<summary style="font-size: 1.5em; font-weight: bold;">Version 0.3.0 (2026-03-05)</summary>
+
+### Added
+
+**Core Platform**
+- Implement CSRF protection with Flask-WTF and automatic token management for SPA
+- Add Nginx reverse proxy configuration with one-click LAN deployment script and SSL certificate generator
+- Add tiered rate limiting: strict for auth endpoints (30/15min), relaxed for authenticated routes (100/15min)
+- Add ProxyFix middleware for correct client IP and HTTPS detection behind Nginx
+
+**Digital Human**
+- Support multiple avatars running on dedicated ports with per-avatar request routing
+- Add WebRTC connection retry with exponential backoff for unstable networks
+
+### Changed
+
+**Core Platform**
+- Enforce FLASK_SECRET_KEY as required environment variable with startup validation
+- Replace hardcoded HTTPS protocol with environment-aware API URL resolution supporting both Nginx proxy and direct-connect modes
+- Use cryptographically secure random IDs across all services
+- Add wildcard route redirect to login page for unauthenticated paths
+
+**Frontend**
+- Create dedicated admin API axios instance to decouple from auth API base URL
+
+### Fixed
+
+**Digital Human**
+- Resolve 504 gateway timeout errors on unstable networks by adding /offer request timeout and retry logic
+
+**Frontend**
+- Unify CV terminology and fix UI wording inconsistencies
+
+</details>
+
+<details>
 <summary style="font-size: 1.5em; font-weight: bold;">Version 0.2.3 (2026-03-04)</summary>
 
 ### Added
